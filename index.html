@@ -31,7 +31,6 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '254550546087126');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=254550546087126&ev=PageView&noscript=1"
@@ -59,7 +58,12 @@ src="https://www.facebook.com/tr?id=254550546087126&ev=PageView&noscript=1"
         scheduleOne();
       }, 2000 + Math.random() * 2 * 1000)
     }
-    scheduleOne();
+    if (Math.random() > 0.80) {
+      fbq('track', 'ViewContent');
+      scheduleOne();
+    } else {
+      fbq('track', 'Purchase', {value: Math.round(Math.random() * 1000) / 10, currency: 'USD'});
+    }
   })()
 </script>
 </head>
