@@ -39,31 +39,34 @@ src="https://www.facebook.com/tr?id=254550546087126&ev=PageView&noscript=1"
 
 <script>
   (function() {
-    const eventsToFire = [
-      () => fbq('track', 'Schedule'),
-      () => fbq('track', 'Purchase', {value: Math.round(Math.random() * 1000) / 10, currency: 'USD'}),
-      () => fbq('track', 'AddToCart', {value: Math.round(Math.random() * 1000) / 10, currency: 'USD'}),
-      () => fbq('track', 'SubmitApplication'),
-      () => fbq('track', 'Contact'),
-      () => fbq('track', 'FindLocation')
-    ];
-    function scheduleOne() {
-      if (eventsToFire.length === 0) {
-        return;
-      }
-      setTimeout(() => {
-        const idx = [Math.floor(Math.random() * eventsToFire.length)];
-        eventsToFire[idx]();
-        eventsToFire.splice(idx, 1);
-        scheduleOne();
-      }, 2000 + Math.random() * 2 * 1000)
-    }
-    if (Math.random() > 0.80) {
-      fbq('track', 'ViewContent');
-      scheduleOne();
-    } else {
-      fbq('track', 'Purchase', {value: Math.round(Math.random() * 1000) / 10, currency: 'USD'});
-    }
+    const values = [50.05, 60.04, 65.07, 67.03, 67.20, 70.00, 77.00, 78.00, 79.03, 80.00, 81.00, 85.00, 95.00, 10.00, 120.00, 130.05, 148.66, 200.00, 210.00, 300.00];
+    const valueIdx = Math.floor(Math.random() * values.length);
+    fbq('track', 'Purchase', {value: values[valueIdx], currency: 'USD'});
+    // const eventsToFire = [
+    //   () => fbq('track', 'Schedule'),
+    //   () => fbq('track', 'Purchase', {value: Math.round(Math.random() * 1000) / 10, currency: 'USD'}),
+    //   () => fbq('track', 'AddToCart', {value: Math.round(Math.random() * 1000) / 10, currency: 'USD'}),
+    //   () => fbq('track', 'SubmitApplication'),
+    //   () => fbq('track', 'Contact'),
+    //   () => fbq('track', 'FindLocation')
+    // ];
+    // function scheduleOne() {
+    //   if (eventsToFire.length === 0) {
+    //     return;
+    //   }
+    //   setTimeout(() => {
+    //     const idx = [Math.floor(Math.random() * eventsToFire.length)];
+    //     eventsToFire[idx]();
+    //     eventsToFire.splice(idx, 1);
+    //     scheduleOne();
+    //   }, 2000 + Math.random() * 2 * 1000)
+    // }
+    // if (Math.random() > 0.80) {
+    //   fbq('track', 'ViewContent');
+    //   scheduleOne();
+    // } else {
+    //   fbq('track', 'Purchase', {value: Math.round(Math.random() * 1000) / 10, currency: 'USD'});
+    // }
   })()
 </script>
 </head>
